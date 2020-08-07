@@ -12,7 +12,7 @@ For instance:
 	from mood-monitor import face;
 
 	let variables = { 
-		"smile": "1.0", // a float between -1 and 1
+		"mouth": "1.0", // a float between -1 and 1
 		"eyes": "0.5", // a float between 0 and 1
 		"eye-bags": "0.5", // a float between 0 and 1
 		"cheeks": "0.5" // a float between 0 and 1
