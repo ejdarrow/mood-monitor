@@ -25,3 +25,6 @@ Other variables or characteristics could be implemented as well.
 # License
 This should be considered open source. Beer code license applies.
 
+# References
+(Azure Facial Detection example)[https://docs.microsoft.com/en-us/azure/cognitive-services/face/concepts/face-detection]
+
