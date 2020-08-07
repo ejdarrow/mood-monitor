@@ -27,4 +27,5 @@ This should be considered open source. Beer code license applies.
 
 # References
 [Azure Facial Detection example](https://docs.microsoft.com/en-us/azure/cognitive-services/face/concepts/face-detection)
+[Some other face readers](https://nordicapis.com/20-emotion-recognition-apis-that-will-leave-you-impressed-and-concerned/)
 
