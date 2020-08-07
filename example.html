@@ -1,12 +1,13 @@
 <html>
 <head>
-<script type="module" src="core/mood-monitor.js"></script>
 </head>
 <body>
 <div id="example">
 </div>
-<script>
-document.getElementById("example").innerHtml(exampleFace());
+<script type="module">
+import {exampleFace} from "./core/mood-monitor.js";
+console.log(document.getElementById("example"));
+document.getElementById("example").insertAdjacentHTML("afterbegin", exampleFace());
 </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-import {drawFace} from "./graphics/drawFace.js";
+import {drawFace} from "./graphics/drawing.js";
 
 export {face, exampleFace};
 
@@ -10,10 +10,12 @@ function face(variables) {
 
 function exampleFace() {
 	let variables = {
-		"eyes":0.3, // Awake
-		"mouth":1.0, // Happy
-		"eyeBags":0.1, // A little stressed
-		"cheeks":0.5 // Somewhat unhealthy
+		"width":200, //TODO: Preserve aspect ratio of drawn face somehow
+		"height":200, 
+		"eyes":"0.7", // Awake
+		"mouth":"1.0", // Happy
+		"eyeBags":"0.1", // A little stressed
+		"cheeks":"0.5" // Somewhat unhealthy
 	};
 	return drawFace(variables);
 };
