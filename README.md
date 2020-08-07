@@ -27,5 +27,9 @@ This should be considered open source. Beer code license applies.
 
 # References
 [Azure Facial Detection example](https://docs.microsoft.com/en-us/azure/cognitive-services/face/concepts/face-detection)
+
 [Some other face readers](https://nordicapis.com/20-emotion-recognition-apis-that-will-leave-you-impressed-and-concerned/)
 
+[This Readme on github pages](https://ejdarrow.github.io/mood-monitor)
+
+[The example implementation](https://ejdarrow.github.io/mood-monitor/example.html)
