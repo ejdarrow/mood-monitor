@@ -16,11 +16,12 @@ For instance:
 		"height":100,
 		"mouth": "1.0", // a float between -1 and 1
 		"eyes": "0.5", // a float between 0 and 1
+		"eyebrowFactor": "0.75", // a float between -1 and 1 (can extend for emphasis)
 		"eye-bags": "0.5", // a float between 0 and 1
 		"cheeks": "0.5" // a float between 0 and 1
 		};
 
-	$("that-div").html(face.render(variables));
+	$("that-div").html(face(variables));
 
 
 Or
@@ -34,7 +35,7 @@ Or
 		"happy":"0.3"
 		};
 	
-	$("that-div").html(expression.render(variables));
+	$("that-div").html(expression(variables));
 
 Other variables or characteristics could be implemented as well.
 
