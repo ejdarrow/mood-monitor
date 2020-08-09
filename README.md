@@ -24,6 +24,7 @@ For instance:
 
 
 Or
+
 	from mood-monitor import expression;
 	
 	let variables = {
