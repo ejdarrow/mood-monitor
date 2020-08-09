@@ -2,12 +2,14 @@
 <head>
 </head>
 <body>
-<div id="example">
+<div style="border:black 1px solid;" id="exampleBoredSad">
+</div>
+<div style="border:black 1px solid;" id="exampleHappyAwake">
 </div>
 <script type="module">
-import {exampleFace} from "./core/mood-monitor.js";
-console.log(document.getElementById("example"));
-document.getElementById("example").insertAdjacentHTML("afterbegin", exampleFace());
+import {exampleBoredSadFace, exampleHappyAwakeFace} from "./core/mood-monitor.js";
+document.getElementById("exampleBoredSad").insertAdjacentHTML("afterbegin", exampleBoredSadFace());
+document.getElementById("exampleHappyAwake").insertAdjacentHTML("afterbegin", exampleHappyAwakeFace());
 </script>
 </body>
 </html>
