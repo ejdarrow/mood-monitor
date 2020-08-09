@@ -12,6 +12,8 @@ For instance:
 	from mood-monitor import face;
 
 	let variables = { 
+		"width":100,
+		"height":100,
 		"mouth": "1.0", // a float between -1 and 1
 		"eyes": "0.5", // a float between 0 and 1
 		"eye-bags": "0.5", // a float between 0 and 1
@@ -19,6 +21,19 @@ For instance:
 		};
 
 	$("that-div").html(face.render(variables));
+
+
+Or
+	from mood-monitor import expression;
+	
+	let variables = {
+		"width":100,
+		"height":100,
+		"stressed":"0.5",
+		"happy":"0.3"
+		};
+	
+	$("that-div").html(expression.render(variables));
 
 Other variables or characteristics could be implemented as well.
 
