@@ -12,8 +12,8 @@ function exampleFace() {
 	let variables = {
 		"width":200, //TODO: Preserve aspect ratio of drawn face somehow
 		"height":200, 
-		"eyes":"0.7", // Awake
-		"mouth":"1.0", // Happy
+		"eyes":"0.2", // Awake
+		"mouth":"-0.5", // Happy
 		"eyeBags":"0.1", // A little stressed
 		"cheeks":"0.5" // Somewhat unhealthy
 	};
