@@ -50,3 +50,7 @@ This should be considered open source. Beer code license applies.
 [This Readme on github pages](https://ejdarrow.github.io/mood-monitor)
 
 [The example implementation](https://ejdarrow.github.io/mood-monitor/example.html)
+
+# TODO:
+Switch to using template literals
+[Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
