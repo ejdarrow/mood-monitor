@@ -5,15 +5,21 @@
   <title>Example</title>
   <link rel="shortcut icon" href="data:;base64,iVBORw0KGgo=">
 </head>
-<body>
-  <div style="border:black 1px solid;" id="exampleBoredSad"></div>
-  <div style="border:black 1px solid;" id="exampleHappyAwake"></div>
-  <script type="module">
-    import {exampleBoredSadFace, exampleHappyAwakeFace} from "./core/mood-monitor.js";
-    let elem = document.getElementById("exampleBoredSad");
-    elem.insertAdjacentHTML("afterbegin", exampleBoredSadFace());
-    elem = document.getElementById("exampleHappyAwake");
-    elem.insertAdjacentHTML("afterbegin", exampleHappyAwakeFace());
-  </script>
-</body>
+    <body>
+        <div style="border:black 1px solid;" id="happy">happy</div>
+        <div style="border:black 1px solid;" id="surprised">surprised</div>
+        <div style="border:black 1px solid;" id="sad">sad</div>
+        <div style="border:black 1px solid;" id="angry">angry</div>
+        <div style="border:black 1px solid;" id="afraid">afraid</div>
+        <div style="border:black 1px solid;" id="disgusted">disgusted</div>
+        <script type="module">
+            import { happy, surprised, sad, angry, afraid, disgusted } from "./core/mood-monitor.js";
+	    document.getElementById("happy").insertAdjacentHTML("afterbegin", happy());
+            document.getElementById("surprised").insertAdjacentHTML("afterbegin", surprised());
+            document.getElementById("sad").insertAdjacentHTML("afterbegin", sad());
+            document.getElementById("angry").insertAdjacentHTML("afterbegin", angry());
+            document.getElementById("afraid").insertAdjacentHTML("afterbegin", afraid());
+            document.getElementById("disgusted").insertAdjacentHTML("afterbegin", disgusted());
+        </script>
+    </body>
 </html>
