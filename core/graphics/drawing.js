@@ -1,123 +1,72 @@
 export { drawFace };
 
-function drawFace(variables) {
-	var result = "<svg width=\"";
-	result += variables["width"];
-	result += "\" height=\"";
-	result += variables["height"];
-	result += "\" xmlns=\"http://www.w3.org/2000/svg\">";
-	result += drawEyes(variables);
-	result += drawMouth(variables);
-	result += drawOtherElements(variables);
+function drawFace(config) {
+  let result = `<svg width="${config.width}"
+    height="${config.height}" xmlns="http://www.w3.org/2000/svg">`;
+	result += drawEyes(config);
+	result += drawMouth(config);
+	result += drawOtherElements(config);
 	result += "</svg>";
 	return result;
 };
 
-function drawEyes(variables) {
-	
-	var leftEyeCenterX = Math.round(variables["width"]/4.0 + variables["width"]/16.0);
-	var rightEyeCenterX = variables["width"] - leftEyeCenterX;
-	var eyeCenterY = Math.round(2.0*variables["height"]/5.0);
-	var eyeWidth = Math.round(variables["width"]/10.0);
-	var eyeHeight = Math.round(variables["eyes"] * variables["height"]/6.0) + 1;
+function drawEyes(config) {
+	const leftEyeCenterX = Math.round(config.width/4.0 + config.width/16.0);
+	const rightEyeCenterX = config.width - leftEyeCenterX;
+	const eyeCenterY = Math.round(2.0*config.height/5.0);
+	const eyeWidth = Math.round(config.width/10.0);
+  const eyeHeight = Math.round(config.eyes * config.height/6.0) + 1;
 
-	var eyebrowCenterHeight = eyeCenterY - Math.round(3.0*eyeHeight/2.0);
-        var leftEyebrowStartX = leftEyeCenterX - eyeWidth;
-        var leftEyebrowEndX = leftEyeCenterX + eyeWidth;
-        var eyebrowStartY = eyebrowCenterHeight - Math.round(eyeHeight/4.0) * variables["eyebrowFactor"];
-        var eyebrowEndY = eyebrowCenterHeight + Math.round(eyeHeight/4.0) * variables["eyebrowFactor"];
-	var rightEyebrowStartX = rightEyeCenterX + eyeWidth;
-	var rightEyebrowEndX = rightEyeCenterX - eyeWidth;
+	const eyebrowCenterHeight = eyeCenterY - Math.round(3.0*eyeHeight/2.0);
+  const leftEyebrowStartX = leftEyeCenterX - eyeWidth;
+  const leftEyebrowEndX = leftEyeCenterX + eyeWidth;
+  const eyebrowStartY = eyebrowCenterHeight - Math.round(eyeHeight/4.0) * config.eyebrowFactor;
+  const eyebrowEndY = eyebrowCenterHeight + Math.round(eyeHeight/4.0) * config.eyebrowFactor;
+	const rightEyebrowStartX = rightEyeCenterX + eyeWidth;
+	const rightEyebrowEndX = rightEyeCenterX - eyeWidth;
 
-	var drawEyebrows = false;
-	if(variables["eyebrowFactor"]){
-		drawEyebrows = true;
+	let result = drawEye(eyeCenterY, leftEyeCenterX, eyeWidth, eyeHeight);
+
+  const drawEyebrows = (config.eyebrowFactor) ? true : false;
+	if(drawEyebrows) {
+		result += drawEyebrow(
+      eyebrowStartY, leftEyebrowStartX, eyebrowEndY, leftEyebrowEndX);
 	}
 
-	// Left eye
-	var result = "<ellipse ";
-	result += "cx=\"";
-	result += leftEyeCenterX;
-	result += "\" cy=\"";
-	result += eyeCenterY;
-	result += "\" rx=\"";
-	result += eyeWidth;
-	result += "\" ry=\"";
-	result += eyeHeight;
-	result += "\" fill=\"transparent\" stroke=\"black\" />";	
+  result += drawEye(eyeCenterY, rightEyeCenterX, eyeWidth, eyeHeight);
 
-	// Left Eyebrow
 	if(drawEyebrows) {
-		result += "<path d=\"M ";
-		result += leftEyebrowStartX;
-		result += " ";
-		result += eyebrowStartY;
-		result += " L ";
-		result += leftEyebrowEndX;
-		result += " ";
-		result += eyebrowEndY;
-		result += " Z\" stroke=\"black\" fill=\"transparent\"/> ";
-	}
-
-	// Right eye
-	result += "<ellipse ";
-        result += "cx=\"";
-        result += rightEyeCenterX;
-        result += "\" cy=\"";
-        result += eyeCenterY;;
-        result += "\" rx=\"";
-        result += eyeWidth;
-        result += "\" ry=\"";
-        result += eyeHeight;
-        result += "\" fill=\"transparent\" stroke=\"black\" />";
-
-	// Right Eyebrow	
-	if(drawEyebrows) {
-		result += "<path d=\"M ";
-        	result += rightEyebrowStartX;
-	        result += " ";
-        	result += eyebrowStartY;
-	        result += " L ";
-        	result += rightEyebrowEndX;
-	        result += " ";
-        	result += eyebrowEndY;
-	        result += " Z\" stroke=\"black\" fill=\"transparent\"/> ";
+		result += drawEyebrow(
+      eyebrowStartY, rightEyebrowStartX, eyebrowEndY, rightEyebrowEndX);
 	}
 
 	return result;
 };
 
+function drawEyebrow(startY, startX, endY, endX){
+  return `<path d="M ${startX} ${startY} L ${endX} ${endY} Z"
+    stroke="black" fill="transparent"/>`;
+}
+
+function drawEye(centerY, centerX, width, height){
+  return `<ellipse cx="${centerX}" cy="${centerY}"
+    rx="${width}" ry="${height}" fill="transparent" stroke="black" />`;
+}
 
 //Curves, for my reference are:
 // 1 4
 // 2 3
-function drawMouth(variables) {
-	var result = "<path d=\"";
-	var mouthX = Math.round(variables["width"]/4.0 +variables["width"]/16.0);
-	var mouthEndX = variables["width"] - mouthX;
-
-
-	result += "M " + mouthX;
-	var mouthY =  Math.round(5.0*variables["height"]/6.0);
-	if(variables["mouth"] > 0){
-		mouthY -= variables["height"]/6.0;
-	}
-	result += " " + mouthY;
-	result += " C ";
-	
-	result += mouthX;
-	result += " ";
-	result += mouthY + variables["mouth"] * variables["height"]/5.0 + 1;
-	result += ", " + mouthEndX + " ";
-	result += mouthY + variables["mouth"] * variables["height"]/5.0 + 1;
-	result += ", ";
-	result += mouthEndX + " " + mouthY;
-
-	result += "\" stroke=\"black\" fill=\"transparent\"/>";
-
+function drawMouth(config) {
+  const startX = Math.round(config.width/4.0 + config.width/16.0);
+  const endX = config.width - startX;
+  let temp = config.height / 6.0;
+  const y = Math.round((config.mouth > 0) ? 4*temp : 5*temp);
+  temp = y + config.mouth * config.height/5.0 + 1;
+  let result = `<path d="M ${startX} ${y} C ${startX} ${temp},
+    ${endX} ${temp}, ${endX} ${y}" stroke="black" fill="transparent"/>`;
 	return result;
 };
 
-function drawOtherElements(variables) {
+function drawOtherElements(config) {
 	return "";
 };
