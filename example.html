@@ -1,15 +1,19 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
 <head>
+  <meta charset="UTF-8">
+  <title>Example</title>
+  <link rel="shortcut icon" href="data:;base64,iVBORw0KGgo=">
 </head>
 <body>
-<div style="border:black 1px solid;" id="exampleBoredSad">
-</div>
-<div style="border:black 1px solid;" id="exampleHappyAwake">
-</div>
-<script type="module">
-import {exampleBoredSadFace, exampleHappyAwakeFace} from "./core/mood-monitor.js";
-document.getElementById("exampleBoredSad").insertAdjacentHTML("afterbegin", exampleBoredSadFace());
-document.getElementById("exampleHappyAwake").insertAdjacentHTML("afterbegin", exampleHappyAwakeFace());
-</script>
+  <div style="border:black 1px solid;" id="exampleBoredSad"></div>
+  <div style="border:black 1px solid;" id="exampleHappyAwake"></div>
+  <script type="module">
+    import {exampleBoredSadFace, exampleHappyAwakeFace} from "./core/mood-monitor.js";
+    let elem = document.getElementById("exampleBoredSad");
+    elem.insertAdjacentHTML("afterbegin", exampleBoredSadFace());
+    elem = document.getElementById("exampleHappyAwake");
+    elem.insertAdjacentHTML("afterbegin", exampleHappyAwakeFace());
+  </script>
 </body>
 </html>
