@@ -14,12 +14,21 @@ function drawEyes(config) {
   const w = Math.round(1/10 * config.width);
   let h = Math.round(1/6 * config.eyes * config.height) + 1;
   let y = Math.round(2/5 * config.height);
+  const irisY = y + h/4;
+  const irisH = Math.min(h/2, w);
+  const irisW = Math.min(h/2, w);
   const leftX = Math.round(5/16 * config.width);
   const rightX = config.width - leftX;
 
   // Draw eyes
   let result = drawEye(y, leftX, w, h);
   result += drawEye(y, rightX, w, h);
+
+  // Draw irises
+  if(config.hasIrises) {
+    result += drawIris(irisY, leftX, irisW, irisH);
+    result += drawIris(irisY, rightX, irisW, irisH);
+  }
 
   // Draw eyebrows
   if (config.eyebrowFactor) {
@@ -42,6 +51,12 @@ function drawEye(centerY, centerX, width, height){
     rx="${width}" ry="${height}" fill="transparent" stroke="black" />`;
 }
 
+function drawIris(centerY, centerX, width, height){
+  return `<ellipse cx="${centerX}" cy="${centerY}"
+    rx="${width}" ry="${height}" fill="black" stroke="black" />`;
+}
+
+
 //Curves, for my reference are:
 // 1 4
 // 2 3
@@ -51,8 +66,11 @@ function drawMouth(config) {
   let temp = config.height / 6;
   const y = Math.round((config.mouth > 0) ? 4*temp : 5*temp);
   temp = y + config.mouth * config.height/5 + 1;
-  let result = `<path d="M ${startX} ${y} C ${startX} ${temp},
-    ${endX} ${temp}, ${endX} ${y}" stroke="black" fill="transparent"/>`;
+  const temp2 = temp * 1.05;
+  let result = `<path d="M ${startX} ${y} 
+	C ${startX} ${temp}, ${endX} ${temp}, ${endX} ${y} 
+	${config.mouthOpen?`C ${endX} ${temp2}, ${startX} ${temp2}, ${startX} ${y}"`:`"`} 
+	stroke="black" fill="transparent"/>`;
   return result;
 };
 

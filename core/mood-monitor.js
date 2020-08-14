@@ -18,6 +18,8 @@ function exampleBoredSadFace() {
     "height": 200,
     "eyes": 0.2, // Awake
     "mouth": -0.5, // Happy
+    "hasIrises": true,
+    "mouthOpen": false,
     "eyeBags": 0.1, // A little stressed
     "eyebrowFactor": -2.0,
     "cheeks": 0.5 // Somewhat unhealthy
@@ -31,6 +33,7 @@ function exampleHappyAwakeFace() {
     "height": 200,
     "eyes": 0.8, // Awake
     "mouth": 0.7, // Happy
+    "mouthOpen": true,
     "eyeBags": 0.1, // A little stressed
     "cheeks": 0.5 // Somewhat unhealthy
   };
